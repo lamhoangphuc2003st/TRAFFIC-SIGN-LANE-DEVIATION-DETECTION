@@ -14,13 +14,26 @@ Hệ thống nhận diện biển báo giao thông và cảnh báo lệch làn *
 
 ## Demo
 
-<!-- TODO: thay bằng GIF thật hoặc link YouTube (unlisted).
-     Mẹo: đừng commit file video vào git. Upload clip lên YouTube (unlisted) rồi
-     dán ảnh thumbnail có link, hoặc cắt một đoạn ngắn thành GIF < 10 MB. -->
+### Ảnh kết quả nhận diện
 
-<!-- Ví dụ khi đã có GIF trong docs/:  ![demo](docs/demo.gif)  -->
+Một số kết quả nhận diện biển báo & đèn tín hiệu trên đường thực tế (mô hình `best.pt`):
 
-_Demo GIF / video sẽ được cập nhật._
+| | |
+|:---:|:---:|
+| ![demo_01](demo/images/demo_01.jpg) | ![demo_02](demo/images/demo_02.jpg) |
+| Đèn đỏ + biển giới hạn tốc độ, cấm đi ngược chiều | Biển tốc độ + chú ý người đi bộ |
+| ![demo_03](demo/images/demo_03.jpg) | ![demo_04](demo/images/demo_04.jpg) |
+| Biển giới hạn tốc độ 60/80 | Cấm ô tô, đi chậm |
+| ![demo_05](demo/images/demo_05.jpg) | ![demo_06](demo/images/demo_06.jpg) |
+| Biển tốc độ 50/60 | Đèn xanh + biển tốc độ 50/60 |
+
+### Video demo
+
+Nhấn vào ảnh để xem video chạy thực tế trên YouTube:
+
+| [![Video demo 1](https://img.youtube.com/vi/Yd7NCJm8jwU/0.jpg)](https://youtu.be/Yd7NCJm8jwU) | [![Video demo 2](https://img.youtube.com/vi/PJ-JUsoh3nI/0.jpg)](https://youtu.be/PJ-JUsoh3nI) |
+|:---:|:---:|
+| Video demo 1 | Video demo 2 |
 
 ---
 
@@ -202,24 +215,4 @@ python datn.py --model best.pt --source 0 --device cuda
 ## Hướng phát triển
 
 - Cải thiện và **cân bằng lớp** cho bộ dữ liệu.
-- Bổ sung **camera hồng ngoại / cảm biến ánh sáng** để cải thiện nhận diện trong điều kiện thiếu sáng.
-- Nâng cấp nền tảng phần cứng để tăng thông lượng.
-- Xây dựng **giao diện người dùng**.
-- Tiến tới **triển khai thực tế**.
-
----
-
-## Tác giả
-
-- **Lâm Hoàng Phúc** — 21119350
-- **Nguyễn Văn Thảo** — 21119129
-
-Thực hiện tại Khoa Điện – Điện tử, Bộ môn Kỹ thuật Máy tính – Viễn thông, HCMUTE.
-
----
-
-## Lời cảm ơn
-
-- [Ultralytics YOLOv8](https://github.com/ultralytics/ultralytics)
-- [Roboflow](https://roboflow.com/) cho việc gắn nhãn & tăng cường dữ liệu
-- NVIDIA Jetson Nano
+- Bổ sung **camera hồng ngoại / cảm biến ánh sáng** để cải t
