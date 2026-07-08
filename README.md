@@ -105,8 +105,8 @@ Huấn luyện bằng framework Ultralytics YOLOv8 trên Google Colab (bộ dữ
 | Optimizer        | AdamW       |
 | Learning rate    | 0.01        |
 | Batch size       | 4           |
-| Kích thước ảnh   | 352         |
-| Số epoch         | <!-- TODO --> |
+| Kích thước ảnh   | 352 × 352   |
+| Số epoch         | 100 (mặc định Ultralytics) |
 
 ---
 
@@ -121,16 +121,25 @@ Huấn luyện bằng framework Ultralytics YOLOv8 trên Google Colab (bộ dữ
 
 **So sánh các phiên bản YOLOv8**
 
-<!-- TODO: điền số liệu từ slide báo cáo (slide 15) -->
+Chỉ số mAP@0.5 và F1-score lấy trên Jetson Nano (giá trị trên Colab gần như tương đương):
 
 | Mô hình   | mAP@0.5 | F1-score | FPS (Jetson Nano) | FPS (Colab) |
 |-----------|---------|----------|-------------------|-------------|
-| YOLOv8n   | 0.94    |          | 13.57             |             |
-| YOLOv8s   |         |          |                   |             |
-| YOLOv8m   |         |          |                   |             |
+| YOLOv8n   | 0.939   | 0.84     | 13.57             | 36.18       |
+| YOLOv8s   | 0.952   | 0.87     | 11.77             | 35.21       |
+| YOLOv8m   | 0.957   | 0.88     | 7.12              | 32.03       |
+
+**Tác động của learning rate & batch size** (YOLOv8n trên Jetson Nano):
+
+| Learning rate | Batch size | Thời gian train | F1   | mAP@0.5 |
+|---------------|------------|-----------------|------|---------|
+| 0.01          | 4          | 38h             | 0.84 | 0.939   |
+| 0.0001        | 4          | 41h             | 0.82 | 0.925   |
+| 0.01          | 16         | 34h             | 0.85 | 0.946   |
 
 Một số nhận xét từ nghiên cứu:
-- Jetson Nano và Colab đạt **độ chính xác tương đương**; GPU là yếu tố quyết định FPS.
+- Model càng lớn (n → s → m) thì **mAP/F1 càng cao nhưng FPS càng giảm**; YOLOv8n được chọn để cân bằng độ chính xác và tốc độ thời gian thực trên Jetson Nano.
+- Jetson Nano và Colab đạt **độ chính xác tương đương**; GPU là yếu tố quyết định FPS (Colab nhanh gấp ~2.6–4.5 lần).
 - Việc tinh chỉnh **learning rate và batch size** ảnh hưởng rõ rệt đến hiệu suất cuối của mô hình.
 
 <!-- TODO: thêm biểu đồ huấn luyện (Loss / mAP) và biểu đồ mAP@0.5 theo từng lớp vào docs/ rồi nhúng vào đây. -->
