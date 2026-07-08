@@ -149,8 +149,8 @@ Một số nhận xét từ nghiên cứu:
 ## Cài đặt
 
 ```bash
-git clone https://github.com/<your-username>/<your-repo>.git
-cd <your-repo>
+git clone https://github.com/lamhoangphuc2003st/TRAFFIC-SIGN-LANE-DEVIATION-DETECTION.git
+cd TRAFFIC-SIGN-LANE-DEVIATION-DETECTION
 
 python -m venv venv
 source venv/bin/activate        # Windows: venv\Scripts\activate
@@ -158,9 +158,7 @@ source venv/bin/activate        # Windows: venv\Scripts\activate
 pip install ultralytics opencv-python
 ```
 
-Trọng số đã huấn luyện (`best.pt`) được đăng trong mục
-[**Releases**](../../releases) <!-- TODO: upload best.pt vào release (hoặc dùng Git LFS) thay vì commit thẳng vào repo -->.
-Tải về và đặt vào thư mục gốc dự án trước khi chạy.
+Trọng số đã huấn luyện (`best.pt`) có sẵn trong repo. Chỉ cần clone về là chạy được ngay.
 
 ---
 
@@ -169,7 +167,7 @@ Tải về và đặt vào thư mục gốc dự án trước khi chạy.
 Chạy suy luận trên một video:
 
 ```bash
-python datn.py --model best.pt --source 3.mp4 --output out.avi
+python detect.py --model best.pt --source 3.mp4 --output out.avi
 ```
 
 Script `datn.py` nhận các tham số dòng lệnh:
@@ -190,7 +188,7 @@ Trong khi chạy, cửa sổ preview sẽ hiển thị; nhấn **`q`** để tho
 Ví dụ chạy webcam trên GPU:
 
 ```bash
-python datn.py --model best.pt --source 0 --device cuda
+python detect.py --model best.pt --source 0 --device cuda
 ```
 
 > Lưu ý: mặc định script chạy trên **CPU**. Trên Jetson Nano, mô hình chạy trên
@@ -202,16 +200,14 @@ python datn.py --model best.pt --source 0 --device cuda
 
 ```
 .
-├── datn.py                 # Suy luận: nhận diện biển báo + phát hiện lệch làn trên video
-├── best.pt                 # Trọng số YOLOv8 đã huấn luyện (qua Releases / Git LFS)
-├── docs/                   # GIF demo, biểu đồ kết quả, ảnh chụp màn hình
-├── requirements.txt
+├── detect.py               # Suy luận: nhận diện biển báo + phát hiện lệch làn trên video
+├── best.pt                 # Trọng số YOLOv8 đã huấn luyện
+├── demo/
+│   └── images/             # Ảnh kết quả nhận diện (demo_01…06.jpg)
+├── report_DATN.pdf         # Báo cáo đồ án tốt nghiệp
+├── slides_DATN.pptx        # Slide báo cáo
 └── README.md
 ```
-
-<!-- TODO: chỉnh lại cho khớp repo thực tế. Nếu còn giữ notebook/config huấn luyện,
-     hãy thêm vào (ví dụ train.ipynb hoặc data.yaml) — nhà tuyển dụng đánh giá cao
-     việc thấy code huấn luyện, không chỉ mỗi file trọng số. -->
 
 ---
 
