@@ -106,7 +106,7 @@ Huấn luyện bằng framework Ultralytics YOLOv8 trên Google Colab (bộ dữ
 | Learning rate    | 0.01        |
 | Batch size       | 4           |
 | Kích thước ảnh   | 352 × 352   |
-| Số epoch         | 100 (mặc định Ultralytics) |
+| Số epoch         | ~60 (early stopping, patience = 10) |
 
 ---
 
